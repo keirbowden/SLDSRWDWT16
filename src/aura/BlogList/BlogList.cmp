@@ -1,0 +1,91 @@
+<aura:component >
+    <aura:attribute name="posts" type="Blog_Post__c[]" />
+    <aura:registerEvent name="comment" type="c:BlogCommentEvt" />
+    <aura:attribute name="newCommentName" type="String" />
+    <aura:attribute name="newCommentDetail" type="String" />
+    
+    <aura:iteration items="{!v.posts}" var="post">
+        <div class="slds-card slds-m-around--medium">
+            <div class="slds-card__header slds-theme--alt-inverse slds-grid">
+                <div class="slds-text-heading--small">{!post.Name}</div>
+            </div>
+            <div class="slds-card__body slds-theme--default">
+                <div class="slds-m-around--medium ">
+                    <c:Picture source1media="(min-width: 800px)"
+                               source1srcset="{!'/servlet/servlet.FileDownload?file=' + post.Large_Image_ID__c + ' 1280w'}"
+		                       source2media="(min-width: 400px)"
+                               source2srcset="{!'/servlet/servlet.FileDownload?file=' + post.Medium_Image_ID__c + ' 400w'}" 
+                               imagesrc="{!'/servlet/servlet.FileDownload?file=' + post.Small_Image_ID__c}"/>
+					<div style="slds-clearfix"></div>
+                    <br/>
+                    {!post.Body__c}
+                </div>
+            </div>
+            <div class="slds-card__footer">
+                <section class="slds-clearfix">
+                    <div class="slds-float--left">{!post.Author__c}, {!post.Published_Date__c}</div>                            
+                    <div class="slds-float--right">
+                        <span class="slds-icon_container">
+                            <c:SVG ariahidden="true" class="slds-icon slds-icon--small slds-icon-text-default"
+                                   xlinkHref="/resource/SLDS_1_0_2/assets/icons/utility-sprite/svg/symbols.svg#comments"/>
+                            <span class="slds-assistive-text">Comments</span>
+                        </span>                                    
+                        {!post.Comment_Count__c}
+                    </div>                            
+                </section>
+            </div>
+        </div>
+        <div class="slds-x-small-show-only slds-m-around--medium">
+            <aura:if isTrue="{!post.hideComments}">
+                <button id="{!'toggle-' + post.Id}" class="slds-button slds-button--neutral  slds-m-bottom--large" onclick="{!c.toggleComments}">
+                    <c:SVG ariahidden="true" class="slds-button__icon slds-button__icon--left"
+                           xlinkHref="/resource/SLDS_1_0_2/assets/icons/utility-sprite/svg/symbols.svg#expand_alt" />
+                    Show Comments
+                </button>        
+            </aura:if>
+            <aura:if isTrue="{! !post.hideComments}">
+                <button id="{!'toggle-' + post.Id}" class="slds-button slds-button--neutral" onclick="{!c.toggleComments}">
+                    <c:SVG ariahidden="true" class="slds-button__icon slds-button__icon--left"
+                           xlinkHref="/resource/SLDS_1_0_2/assets/icons/utility-sprite/svg/symbols.svg#contract_alt" />
+                    Hide Comments
+                </button>        
+            </aura:if>
+        </div>
+        <div class="{!(post.hideComments?'slds-small-show':'') + ' slds-m-around--medium slds-m-top--large'}">
+            <div class="slds-card">
+                <div class="slds-card__header slds-theme--shade slds-grid">
+                    <div class="slds-text-heading--small">Comments</div>
+                </div>
+            </div>           
+            <aura:iteration items="{!post.Blog_Post_Comments__r}" var="comment">
+                <div class="slds-grid slds-wrap slds-m-around--medium">
+                    <div class="slds-col slds-size--1-of-1 slds-medium-size--4-of-6">
+                        <div>{!comment.Comment__c}</div>
+                    </div>
+                    <div class="slds-col slds-size--1-of-1 slds-medium-size--1-of-6">
+                        <div>{!comment.Author__c}</div>
+                    </div>
+                    <div class="slds-col slds-size--1-of-1 slds-medium-size--1-of-6">
+                        <div>{!comment.Date__c}</div>
+                    </div>
+                </div>
+            </aura:iteration>
+            <div class="slds-form-element slds-m-top--medium">
+                <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon--left">
+                    <c:SVG ariahidden="true" class="slds-input__icon slds-icon-text-default"
+                           xlinkHref="/resource/SLDS_1_0_2/assets/icons/utility-sprite/svg/symbols.svg#user" />
+                    <ui:inputText value="{!v.newCommentName}" class="slds-input" placeholder="name" />
+                </div>
+            </div>        
+            <div class="slds-form-element slds-m-top--medium">
+                <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon--left">
+                    <ui:inputTextArea value="{!v.newCommentDetail}" class="slds-textarea" placeholder="comment" />
+                </div>
+            </div>        
+            <section class="slds-clearfix">
+                <button id="{!post.Id}" class="slds-button slds-button--brand slds-m-top--medium slds-float--right" onclick="{!c.addComment}">Comment</button>                            
+            </section>
+        </div>
+    </aura:iteration>
+    
+</aura:component>

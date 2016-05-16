@@ -1,0 +1,2 @@
+<aura:event type="APPLICATION" 
+            description="Event indicating that search and results should be reset" />

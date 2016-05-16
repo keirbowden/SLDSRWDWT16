@@ -1,0 +1,54 @@
+<aura:component controller="BlogHomeController" implements="force:appHostable">
+    <ltng:require styles="/resource/SLDS_1_0_2/assets/styles/salesforce-lightning-design-system-ltng.css"
+                  afterScriptsLoaded="{!c.loadInitialPosts}" />
+    
+    <aura:attribute name="posts" type="Blog_Post__c[]" />
+    <aura:handler event="c:BlogSearchEvt" action="{!c.search}" /> 
+    <aura:handler event="c:ResetSearchEvt" action="{!c.resetSearch}" /> 
+    <aura:handler event="c:BlogCommentEvt" action="{!c.comment}" /> 
+    
+    <div class="slds">
+        <div class="slds-page-header" role="banner">
+            <div class="slds-grid">
+                <div class="slds-col slds-has-flexi-truncate">
+                    <div class="slds-media">
+                        <div class="slds-media__figure">
+                            <c:SVG ariahidden="true" class="slds-icon slds-icon--large slds-icon-standard-news"
+                                   xlinkHref="/resource/SLDS_1_0_2/assets/icons/standard-sprite/svg/symbols.svg#news" />
+                        </div>
+                        <div class="slds-media__body">
+                            <p class="slds-page-header__title slds-truncate slds-align-middle" title="Blog Posts">Blog Posts</p>
+                            <p class="slds-text-body--small slds-max-x-small-hide slds-page-header__info">All the news • and Views • from our experts</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-small-show slds-col slds-no-flex slds-align-bottom">
+                    <button class="slds-button slds-button--neutral slds-not-selected" aria-live="assertive"
+                            onclick="{!c.navigateToLinks}">
+                        <span class="slds-text-not-selected">
+                            <c:SVG ariahidden="true" class="slds-button__icon"
+                                   xlinkHref="/resource/SLDS_1_0_2/assets/icons/utility-sprite/svg/symbols.svg#link" />
+                            Links</span>
+                    </button>
+                </div>
+                <div class="slds-x-small-show-only slds-col slds-no-flex slds-align-bottom">
+                    <button class="slds-button slds-button--neutral slds-not-selected" aria-live="assertive">
+                        <span class="slds-text-not-selected">
+                            <c:SVG ariahidden="true" class="slds-button__icon"
+                                   xlinkHref="/resource/SLDS_1_0_2/assets/icons/utility-sprite/svg/symbols.svg#link" />
+                            </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="slds-grid slds-wrap">
+            <div class="slds-col slds-size--1-of-1 slds-medium-size--3-of-4">
+                <c:BlogList posts="{!v.posts}" />
+            </div>
+            <div class="slds-col slds-size--1-of-1 slds-medium-size--1-of-4">
+                <c:BlogSearch />
+                <c:BlogAboutMe />
+            </div>    
+        </div>
+    </div>
+</aura:component>

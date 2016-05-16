@@ -1,0 +1,9 @@
+<aura:component >
+    <aura:attribute name="source1media" type="String" description="Media query for the first source" />
+    <aura:attribute name="source1srcset" type="String" description="srcset for the first source" />
+    <aura:attribute name="source2media" type="String" description="Media query for the second source" />
+    <aura:attribute name="source2srcset" type="String" description="srcset for the second source" />
+    <aura:attribute name="source3media" type="String" description="Media query for the third source" />
+    <aura:attribute name="source3srcset" type="String" description="srcset for the third source" />
+    <aura:attribute name="imagesrc" type="String" description="Default image source" />
+</aura:component>

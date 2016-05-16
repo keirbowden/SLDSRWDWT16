@@ -1,0 +1,159 @@
+<aura:component implements="force:appHostable">
+    <ltng:require styles="/resource/SLDS_1_0_2/assets/styles/salesforce-lightning-design-system-ltng.css" />
+    
+    <div class="slds">
+        <div class="slds-page-header" role="banner">
+            <div class="slds-grid">
+                <div class="slds-col slds-has-flexi-truncate">
+                    <div class="slds-media">
+                        <div class="slds-media__figure">
+                            <c:SVG ariahidden="true" class="slds-icon slds-icon--large slds-icon-standard-link"
+                                   xlinkHref="/resource/SLDS_1_0_2/assets/icons/standard-sprite/svg/symbols.svg#link" />
+                        </div>
+                        <div class="slds-media__body">
+                            <p class="slds-page-header__title slds-truncate slds-align-middle" title="Blog Posts">Blog Links</p>
+                            <p class="slds-text-body--small slds-max-x-small-hide slds-page-header__info">Useful links for Responsive Design</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-small-show slds-col slds-no-flex slds-align-bottom">
+                    <button class="slds-button slds-button--neutral slds-not-selected" aria-live="assertive"
+                            onclick="{!c.navigateToHome}">
+                        <span class="slds-text-not-selected">
+                            <c:SVG ariahidden="true" class="slds-button__icon"
+                                   xlinkHref="/resource/SLDS_1_0_2/assets/icons/utility-sprite/svg/symbols.svg#home" />
+                            Home</span>
+                    </button>
+                </div>
+                <div class="slds-x-small-show-only slds-col slds-no-flex slds-align-bottom">
+                    <button class="slds-button slds-button--neutral slds-not-selected" aria-live="assertive"
+                            onclick="{!c.navigateToHome}">
+                        <span class="slds-text-not-selected">
+                            <c:SVG ariahidden="true" class="slds-button__icon"
+                                   xlinkHref="/resource/SLDS_1_0_2/assets/icons/utility-sprite/svg/symbols.svg#home" />
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="slds-grid slds-wrap">
+            <div class="slds-col slds-size--1-of-1 slds-large-size--1-of-2">
+                <div class="slds-card slds-m-around--medium">
+                    <div class="slds-card__header slds-grid">
+                        <div class="slds-media slds-media--center slds-has-flexi-truncate">
+                            <div class="slds-media__figure">
+                                <c:SVG ariahidden="true" class="slds-icon slds-icon-standard-contact slds-icon--small"
+                                       xlinkHref="/resource/SLDS_1_0_2/assets/icons/standard-sprite/svg/symbols.svg#article"/>
+                            </div>
+                            <div class="slds-media__body">
+                                <h2 class="slds-text-heading--small slds-truncate"><a href="http://alistapart.com/article/responsive-web-design" target="_blank">Responsive Web Design</a></h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-card__body slds-m-left--medium">
+                        <p>Ethan Marcotte's original A List Apart article</p>
+                    </div>
+                </div>
+                <div class="slds-card slds-m-around--medium">
+                    <div class="slds-card__header slds-grid">
+                        <div class="slds-media slds-media--center slds-has-flexi-truncate">
+                            <div class="slds-media__figure">
+                                <c:SVG ariahidden="true" class="slds-icon slds-icon-standard-contact slds-icon--small"
+                                       xlinkHref="/resource/SLDS_1_0_2/assets/icons/utility-sprite/svg/symbols.svg#world"/>
+                            </div>
+                            <div class="slds-media__body">
+                                <h2 class="slds-text-heading--small slds-truncate"><a href="https://www.lightningdesignsystem.com/" target="_blank">Lightning Design System</a></h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-card__body slds-m-left--medium">
+                        <p>Web site for the Salesforce Lightning Design System</p>
+                    </div>
+                </div>
+                <div class="slds-card slds-m-around--medium">
+                    <div class="slds-card__header slds-grid">
+                        <div class="slds-media slds-media--center slds-has-flexi-truncate">
+                            <div class="slds-media__figure">
+                                <c:SVG ariahidden="true" class="slds-icon slds-icon-standard-contact slds-icon--small"
+                                       xlinkHref="/resource/SLDS_1_0_2/assets/icons/utility-sprite/svg/symbols.svg#world"/>
+                            </div>
+                            <div class="slds-media__body">
+                                <h2 class="slds-text-heading--small slds-truncate"><a href="https://css-tricks.com/" target="_blank">CSS-Tricks</a></h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-card__body slds-m-left--medium">
+                        <p>CSS and related technologies - snippets, videos, tricks and tutorials from Chris Coyler</p>
+                    </div>
+                </div>
+                <div class="slds-card slds-m-around--medium">
+                    <div class="slds-card__header slds-grid">
+                        <div class="slds-media slds-media--center slds-has-flexi-truncate">
+                            <div class="slds-media__figure">
+                                <c:SVG ariahidden="true" class="slds-icon slds-icon-standard-contact slds-icon--small"
+                                       xlinkHref="/resource/SLDS_1_0_2/assets/icons/utility-sprite/svg/symbols.svg#notebook"/>
+                            </div>
+                            <div class="slds-media__body">
+                                <h2 class="slds-text-heading--small slds-truncate"><a href="https://www.packtpub.com/web-development/responsive-web-design-example" target="_blank">Responsive Web Design ...</a></h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-card__body slds-m-left--medium">
+                        <p>by example. Covers multiple responsive framework</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-col slds-size--1-of-1 slds-large-size--1-of-2">
+                <div class="slds-card slds-m-around--medium">
+                    <div class="slds-card__header slds-grid">
+                        <div class="slds-media slds-media--center slds-has-flexi-truncate">
+                            <div class="slds-media__figure">
+                                <c:SVG ariahidden="true" class="slds-icon slds-icon-standard-contact slds-icon--small"
+                                       xlinkHref="/resource/SLDS_1_0_2/assets/icons/utility-sprite/svg/symbols.svg#notebook"/>
+                            </div>
+                            <div class="slds-media__body">
+                                <h2 class="slds-text-heading--small slds-truncate"><a href="https://www.packtpub.com/web-development/responsive-web-design-html5-and-css3" target="_blank">Responsive Design ...</a></h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-card__body slds-m-left--medium">
+                        <p>with HTML5 and CSS3 - a great overview with plenty of real world solutions</p>
+                    </div>
+                </div>
+                <div class="slds-card slds-m-around--medium">
+                    <div class="slds-card__header slds-grid">
+                        <div class="slds-media slds-media--center slds-has-flexi-truncate">
+                            <div class="slds-media__figure">
+                                <c:SVG ariahidden="true" class="slds-icon slds-icon-standard-contact slds-icon--small"
+                                       xlinkHref="/resource/SLDS_1_0_2/assets/icons/utility-sprite/svg/symbols.svg#trail"/>
+                            </div>
+                            <div class="slds-media__body">
+                                <h2 class="slds-text-heading--small slds-truncate"><a href="https://developer.salesforce.com/trailhead/en/module/lightning_design_system" target="_blank">Trailhead</a></h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-card__body slds-m-left--medium">
+                        <p>Trailhead module for the Lightning Design System</p>
+                    </div>
+                </div>
+                <div class="slds-card slds-m-around--medium">
+                    <div class="slds-card__header slds-grid">
+                        <div class="slds-media slds-media--center slds-has-flexi-truncate">
+                            <div class="slds-media__figure">
+                                <c:SVG ariahidden="true" class="slds-icon slds-icon-standard-contact slds-icon--small"
+                                       xlinkHref="/resource/SLDS_1_0_2/assets/icons/standard-sprite/svg/symbols.svg#article"/>
+                            </div>
+                            <div class="slds-media__body">
+                                <h2 class="slds-text-heading--small slds-truncate"><a href="http://alistapart.com/article/using-responsive-images-now" target="_blank">Using Responsive Images (Now)</a></h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-card__body slds-m-left--medium">
+                        <p>A List Apart article covering the responsive image improvements in detail</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</aura:component>

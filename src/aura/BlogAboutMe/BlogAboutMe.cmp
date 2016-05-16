@@ -1,0 +1,17 @@
+<aura:component >
+    <aura:registerEvent name="search" type="c:BlogSearchEvt" />
+    <aura:attribute name="searchString" type="String" />
+    
+    <div class="slds-card slds-m-around--medium">
+        <div class="slds-card__header slds-grid">
+            <div class="slds-text-heading--small">About Me</div>
+        </div>
+        <div class="slds-card__body slds-theme--default">
+            <div class="slds-m-around--medium ">
+                I'm also known as Keir Bowden and I'm CTO of BrightGen,
+                a Salesforce Platinum Cloud Alliance Partner in the UK.
+            </div>
+        </div>
+    </div>
+    
+</aura:component>

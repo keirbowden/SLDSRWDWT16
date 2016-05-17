@@ -5,8 +5,8 @@ This is the codebase behind my responsive apps with the lightning design system 
 ## My Domain
 Don't forget that Lightning Components requires My Domain, so you need to turn that on first.
 
-## Managed Package
-While all the components are here and you can drop them into your Saleforce org, its easier (particularly where Lightning Components are concerned) to install the managed package from :
+## Unmanaged Package
+While all the components are here and you can drop them into your Saleforce org, its easier (particularly where Lightning Components are concerned) to install the unmanaged package from :
 
 https://login.salesforce.com/packaging/installPackage.apexp?p0=04t58000000QzoT
 

@@ -3,6 +3,9 @@
                   afterScriptsLoaded="{!c.loadInitialPosts}" />
     
     <aura:attribute name="posts" type="Blog_Post__c[]" />
+    <aura:attribute name="noPosts" type="Boolean" default="false" />
+
+
     <aura:handler event="c:BlogSearchEvt" action="{!c.search}" /> 
     <aura:handler event="c:ResetSearchEvt" action="{!c.resetSearch}" /> 
     <aura:handler event="c:BlogCommentEvt" action="{!c.comment}" /> 
@@ -44,6 +47,13 @@
         <div class="slds-grid slds-wrap">
             <div class="slds-col slds-size--1-of-1 slds-medium-size--3-of-4">
                 <c:BlogList posts="{!v.posts}" />
+                <aura:if isTrue="{!v.noPosts}">
+	                <div class="slds-m-around--medium ">
+                        You don't have any posts yet. Click the button below to create a couple of samples
+                        <br/>
+    	        	    <button class="slds-button slds-button--brand slds-m-top--medium" onclick="{!c.createPosts}">Create</button>                            
+                    </div>
+                </aura:if>
             </div>
             <div class="slds-col slds-size--1-of-1 slds-medium-size--1-of-4">
                 <c:BlogSearch />

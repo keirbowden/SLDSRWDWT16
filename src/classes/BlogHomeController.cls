@@ -63,4 +63,66 @@ public class BlogHomeController
         insert bc;
     }
 
+	@AuraEnabled
+	public static List<Blog_Post__c> SetupData() 
+	{
+		List<Blog_Post__c> posts=new List<Blog_Post__c>();
+		
+		Blog_Post__c astroPost=new Blog_Post__c(Name='Where\'s Astro', 
+												Body__c='Attention, Trailblazers! Code habanero alert!'  +
+												        ' 🌶Our beloved mascot Astro has gone missing ' +
+												        ' and might be in grave danger.Team Trailhead' + 
+												        ' needs your help to solve the mystery. We\'ll' + 
+												        ' need the entire Trailblazer community to bring' + 
+												        ' Astro home safely—that means YOU!  Are you ready?', 
+												Author__c='Trailhead', 
+												Published_Date__c=Date.newInstance(2016, 4, 1));
+		posts.add(astroPost);
+
+		Blog_Post__c bgmPost=new Blog_Post__c(Name='BrightMedia', 
+												Body__c='BrightMedia is an end-to-end solution for cross-media' + 
+												' ad sales. It solves many challenges faced by the media industry' +
+												' today by integrating Salesforce into the advertising sales process, ' +
+												' managing advertising orders from quotation through to fulfillment ' + 
+												' and billing. This proven solution can provide faster and more ' + 
+												' predictable deployments for customers, empowering them to transform ' +
+												' their processes and connect with customers in entirely new ways.', 
+												Author__c='Keir Bowden', 
+												Published_Date__c=Date.newInstance(2016, 3, 7));
+
+		posts.add(bgmPost);
+
+		// set up the images - oh for a switch statement!
+		for (Document doc : [select id, Name from Document])
+		{
+			if (doc.Name=='Astro Small')
+			{
+				astroPost.Small_Image_ID__c=doc.id;
+			}
+			else if (doc.Name=='Astro Medium')
+			{
+				astroPost.Medium_Image_ID__c=doc.id;
+			}
+			else if (doc.Name=='Astro Large')
+			{
+				astroPost.Large_Image_ID__c=doc.id;
+			}
+			else if (doc.Name=='BrightMedia Small')
+			{
+				bgmPost.Small_Image_ID__c=doc.id;
+			}
+			else if (doc.Name=='BrightMedia Medium')
+			{
+				bgmPost.Medium_Image_ID__c=doc.id;
+			}
+			else if (doc.Name=='BrightMedia Large')
+			{
+				bgmPost.Large_Image_ID__c=doc.id;
+			}
+		}
+		
+		insert posts;
+		
+		return GetInitialPosts();
+	}
 }

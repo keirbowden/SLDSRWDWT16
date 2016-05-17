@@ -56,4 +56,24 @@ private class BlogHomeController_Test
 		posts=BlogHomeController.GetInitialPosts();
         System.assertEquals(1, posts[0].Blog_Post_Comments__r.size());
     }
+
+    @isTest static void TestSetupData()
+    {
+		List<Blog_Post__c> posts=BlogHomeController.GetInitialPosts();
+		
+		Folder fld=[select id from Folder where Type='Document' limit 1];
+		List<Document> docs=new List<Document>();
+		docs.add(new Document(Name='Astro Small', FolderId=fld.id));
+		docs.add(new Document(Name='Astro Medium', FolderId=fld.id));
+		docs.add(new Document(Name='Astro Large', FolderId=fld.id));
+		docs.add(new Document(Name='BrightMedia Small', FolderId=fld.id));
+		docs.add(new Document(Name='BrightMedia Medium', FolderId=fld.id));
+		docs.add(new Document(Name='BrightMedia Large', FolderId=fld.id));
+		
+		insert docs;
+		
+		List<Blog_Post__c> newPosts=BlogHomeController.SetupData();
+		
+		System.assertEquals(newPosts.size(), posts.size()+2);
+    }
 }

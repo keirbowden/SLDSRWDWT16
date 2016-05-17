@@ -13,5 +13,8 @@
     },
     navigateToLinks : function(component, event, helper) {
         helper.navigateToLinks(component, event);
+    },
+    createPosts : function(component, event, helper) {
+        helper.createPosts(component, event);
     }
 })

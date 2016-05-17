@@ -5,7 +5,7 @@
             var action = cmp.get("c.GetInitialPosts");
             var self = this;
             action.setCallback(this, function(response) {
-                self.actionResponseHandler(response, cmp, self, self.gotPosts);
+                self.actionResponseHandler(response, cmp, self, self.gotPosts, true);
             });
             $A.enqueueAction(action);
             
@@ -24,7 +24,7 @@
     	        action.setParams({searchString: searchString});
         	    var self = this;
             	action.setCallback(this, function(response) {
-                	self.actionResponseHandler(response, cmp, self, self.gotPosts);
+                	self.actionResponseHandler(response, cmp, self, self.gotPosts, false);
 	            });
     	        $A.enqueueAction(action);
             }
@@ -103,7 +103,31 @@
             
         }
     },
-    gotPosts : function(cmp, helper, result) {
+    createPosts : function(cmp, ev) {
+        try
+        {
+            var action = cmp.get("c.SetupData");
+            var self = this;
+            action.setCallback(this, function(response) {
+                self.actionResponseHandler(response, cmp, self, self.gotPosts, false);
+            });
+            $A.enqueueAction(action);
+            
+        }
+        catch (e) 
+        {
+            alert('Exception in createPosts ' + e + ', ' + e.stack);
+        }
+    },
+
+    gotPosts : function(cmp, helper, result, checkSize) {
+        if ( (checkSize) && (0==result.length) ) {
+            cmp.set('v.noPosts', true);
+        }
+        else {
+            cmp.set('v.noPosts', false);
+
+        }
         for (var idx=0, len=result.length; idx<len; idx++) {
             result[idx].hideComments=true;
         }

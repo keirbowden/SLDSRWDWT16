@@ -8,7 +8,7 @@ Don't forget that Lightning Components requires My Domain, so you need to turn t
 ## Managed Package
 While all the components are here and you can drop them into your Saleforce org, its easier (particularly where Lightning Components are concerned) to install the managed package from :
 
-https://login.salesforce.com/packaging/installPackage.apexp?p0=04t58000000Qyeu
+https://login.salesforce.com/packaging/installPackage.apexp?p0=04t58000000QzoT
 
 
 ## Blog Posts
